@@ -9,6 +9,8 @@ namespace WebApplicationDotNetCoreGLSIA.Models
         public Guid CategorieId { get; set; }
 
         public Categorie categorie { get; set; }
+        public ICollection<Produit> produits { get; set; }
+        public ICollection<ProduitssCategorie> prodsscateg { get; set; }
     }
 }
     

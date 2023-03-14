@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplicationDotNetCoreGLSIA.Models;
 
@@ -11,9 +12,11 @@ using WebApplicationDotNetCoreGLSIA.Models;
 namespace WebApplicationDotNetCoreGLSIA.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230314131124_TEstAPIFluent")]
+    partial class TEstAPIFluent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace WebApplicationDotNetCoreGLSIA.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ProduitssCategorie", b =>
-                {
-                    b.Property<Guid>("produitsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("sscategsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("produitsId", "sscategsId");
-
-                    b.HasIndex("sscategsId");
-
-                    b.ToTable("ProduitssCategorie");
-                });
 
             modelBuilder.Entity("WebApplicationDotNetCoreGLSIA.Models.Categorie", b =>
                 {
@@ -52,28 +40,6 @@ namespace WebApplicationDotNetCoreGLSIA.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categs", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ca72b856-c29b-4df4-89e3-14b6586d512a"),
-                            Name = "test"
-                        });
-                });
-
-            modelBuilder.Entity("WebApplicationDotNetCoreGLSIA.Models.Produit", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("produits");
                 });
 
             modelBuilder.Entity("WebApplicationDotNetCoreGLSIA.Models.ssCategorie", b =>
@@ -87,30 +53,13 @@ namespace WebApplicationDotNetCoreGLSIA.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("SubCatName");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategorieId");
 
                     b.ToTable("SousCategories");
-                });
-
-            modelBuilder.Entity("ProduitssCategorie", b =>
-                {
-                    b.HasOne("WebApplicationDotNetCoreGLSIA.Models.Produit", null)
-                        .WithMany()
-                        .HasForeignKey("produitsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApplicationDotNetCoreGLSIA.Models.ssCategorie", null)
-                        .WithMany()
-                        .HasForeignKey("sscategsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("WebApplicationDotNetCoreGLSIA.Models.ssCategorie", b =>
