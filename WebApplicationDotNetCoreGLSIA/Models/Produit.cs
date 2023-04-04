@@ -5,6 +5,6 @@
         public Guid Id { get; set; }
         public string Name { get; set; }
         public ICollection<ssCategorie>? sscategs { get; set; }
-        public ICollection<ProduitssCategorie> produitsscateg { get; set; }
+        //public ICollection<ProduitssCategorie> produitsscateg { get; set; }
     }
 }

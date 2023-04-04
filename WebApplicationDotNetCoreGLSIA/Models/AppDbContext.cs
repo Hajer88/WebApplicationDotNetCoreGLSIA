@@ -31,32 +31,39 @@ namespace WebApplicationDotNetCoreGLSIA.Models
                 }
 
             );
-            modelBuilder.Entity<ssCategorie>()
-               .HasMany(p => p.produits)
-               .WithMany(s => s.sscategs)
-               .UsingEntity<ProduitssCategorie>();
+          //  modelBuilder.Entity<ProduitssCategorie>()
+          //.HasKey(t => new { t.ProduitId, t.ssCategorieId });
+          //  modelBuilder.Entity<ProduitssCategorie>()
+          //     .HasOne(p => p.produit)
+          //     .WithMany(s => s.produitsscateg)
+          //     .HasForeignKey(t => t.ProduitId);
+          //  modelBuilder.Entity<ProduitssCategorie>()
+          //     .HasOne(p => p.sscateg)
+          //     .WithMany(s => s.prodsscateg)
+          //     .HasForeignKey(t => t.ssCategorieId);
+
 
 
 
             //Vérifier API Fluent pour relation many to many entre 
             //sscategorie et Produit
-       
-            modelBuilder.Entity<ssCategorie>()
-                 .HasMany(p => p.produits)
-                 .WithMany(s => s.sscategs)
-                 .UsingEntity<ProduitssCategorie>(j =>
-                 j.HasOne(p => p.produit)
-                 .WithMany(t => t.produitsscateg)
-                 .HasForeignKey(t => t.ProduitId),
-                 j => j.
-                 HasOne(p => p.sscateg)
-                 .WithMany(t => t.prodsscateg)
-                 .HasForeignKey(p => p.ssCategorieId),
-                 j =>
-                 {
-                     j.Property(pt => pt.DateAjout);
-                     j.HasKey(t => new { t.ProduitId, t.ssCategorieId });
-                 });
+
+            //modelBuilder.Entity<ssCategorie>()
+            //     .HasMany(p => p.produits)
+            //     .WithMany(s => s.sscategs)
+            //     .UsingEntity<ProduitssCategorie>(j =>
+            //     j.HasOne(p => p.produit)
+            //     .WithMany(t => t.produitsscateg)
+            //     .HasForeignKey(t => t.ProduitId),
+            //     j => j.
+            //     HasOne(p => p.sscateg)
+            //     .WithMany(t => t.prodsscateg)
+            //     .HasForeignKey(p => p.ssCategorieId),
+            //     j =>
+            //     {
+            //         j.Property(pt => pt.DateAjout);
+            //         j.HasKey(t => new { t.ProduitId, t.ssCategorieId });
+            //     });
 
 
         }
