@@ -31,16 +31,23 @@ namespace WebApplicationDotNetCoreGLSIA.Models
                 }
 
             );
-          //  modelBuilder.Entity<ProduitssCategorie>()
-          //.HasKey(t => new { t.ProduitId, t.ssCategorieId });
-          //  modelBuilder.Entity<ProduitssCategorie>()
-          //     .HasOne(p => p.produit)
-          //     .WithMany(s => s.produitsscateg)
-          //     .HasForeignKey(t => t.ProduitId);
-          //  modelBuilder.Entity<ProduitssCategorie>()
-          //     .HasOne(p => p.sscateg)
-          //     .WithMany(s => s.prodsscateg)
-          //     .HasForeignKey(t => t.ssCategorieId);
+            string CatJson = System.IO.File.ReadAllText("Categorie.Json");
+            List<Categorie> categories = System.Text.Json.
+            JsonSerializer.Deserialize<List<Categorie>>(CatJson);
+            //Seed to categorie
+            foreach (Categorie c in categories)
+                modelBuilder.Entity<Categorie>()
+                .HasData(c);
+            //  modelBuilder.Entity<ProduitssCategorie>()
+            //.HasKey(t => new { t.ProduitId, t.ssCategorieId });
+            //  modelBuilder.Entity<ProduitssCategorie>()
+            //     .HasOne(p => p.produit)
+            //     .WithMany(s => s.produitsscateg)
+            //     .HasForeignKey(t => t.ProduitId);
+            //  modelBuilder.Entity<ProduitssCategorie>()
+            //     .HasOne(p => p.sscateg)
+            //     .WithMany(s => s.prodsscateg)
+            //     .HasForeignKey(t => t.ssCategorieId);
 
 
 
