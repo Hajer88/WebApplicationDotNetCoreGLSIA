@@ -18,6 +18,8 @@ builder.Services.AddControllers()
     .AddNewtonsoftJson(options=>
     options.SerializerSettings.ReferenceLoopHandling=
         Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain
+    .GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
