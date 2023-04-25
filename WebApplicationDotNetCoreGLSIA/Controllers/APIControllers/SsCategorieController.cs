@@ -19,5 +19,12 @@ namespace WebApplicationDotNetCoreGLSIA.Controllers.APIControllers
             var sscats = sousCategorieService.GetAll();
             return Ok(sscats);
         }
+        [HttpGet]
+        [Route("{name}")]
+        public IActionResult GetByCatName(string name)
+        {
+            var test = sousCategorieService.GetssCatByCatName(name);
+            return Ok(test);
+        }
     }
 }

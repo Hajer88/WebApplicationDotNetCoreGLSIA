@@ -17,6 +17,7 @@ namespace WebApplicationDotNetCoreGLSIA.Controllers.APIControllers
         }
 
         [HttpGet]
+        //[Route("/getall")]
      
         public async Task<IActionResult> GetAllCat()
         {
