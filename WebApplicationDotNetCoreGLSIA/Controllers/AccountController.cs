@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationDotNetCoreGLSIA.Models;
 
 namespace WebApplicationDotNetCoreGLSIA.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         //private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<IdentityUser> userManager)
+       
+        public AccountController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
