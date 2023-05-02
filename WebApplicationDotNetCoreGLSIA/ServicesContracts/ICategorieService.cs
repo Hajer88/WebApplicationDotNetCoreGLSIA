@@ -7,7 +7,7 @@ namespace WebApplicationDotNetCoreGLSIA.ServicesContracts
     {
         Task<List<CategorieDTO>> GEtAll();
         Task<CategorieDTO> Create(CategorieDTO cat);
-        Categorie Edit(Guid id, CategorieDTO c);
+        CategorieDTO Edit(Guid id, CategorieDTO c);
 
         void Delete(Guid id);
     }

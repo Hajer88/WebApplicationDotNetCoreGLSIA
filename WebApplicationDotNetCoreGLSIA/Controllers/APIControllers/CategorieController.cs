@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using WebApplicationDotNetCoreGLSIA.Models;
+using WebApplicationDotNetCoreGLSIA.Models.DTO;
 using WebApplicationDotNetCoreGLSIA.ServicesContracts;
 
 namespace WebApplicationDotNetCoreGLSIA.Controllers.APIControllers
@@ -26,14 +27,14 @@ namespace WebApplicationDotNetCoreGLSIA.Controllers.APIControllers
         }
         [HttpPost]
         
-        public async Task<IActionResult> CreateCat(Categorie cat)
+        public async Task<IActionResult> CreateCat(CategorieDTO cat)
         {
             var c = await categorieService.Create(cat);
             return Ok(c);
         }
         [HttpPut]
         [Route("{id}")]
-        public IActionResult EditCat(Guid id, Categorie c)
+        public IActionResult EditCat(Guid id, CategorieDTO c)
         {
             var x = categorieService.Edit(id, c);
             return Ok(x);

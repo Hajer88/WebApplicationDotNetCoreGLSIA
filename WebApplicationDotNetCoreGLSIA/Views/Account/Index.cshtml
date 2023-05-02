@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+    @foreach(var item in Model)
+    {
+        <h4>@item.Email</h4>
+    }

@@ -64,5 +64,7 @@ namespace WebApplicationDotNetCoreGLSIA.Services
             _appDbContext.Categories.Remove(t);
             _appDbContext.SaveChanges();
         }
+
+       
     }
 }
